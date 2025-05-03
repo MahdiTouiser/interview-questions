@@ -191,3 +191,42 @@ console.log(add(2, 3)); // 5
 
 ```
 
+## ❓ Question 6: What is the difference between value types and reference types in JavaScript?
+
+### ✅ Answer:
+
+In JavaScript, data types are divided into two categories: **value types** and **reference types**. Understanding the distinction between these types is crucial because it affects how values are stored, passed, and manipulated in memory.
+
+### 🧠 Key Differences:
+
+| Feature                | **Value Types**                               | **Reference Types**                              |
+|------------------------|-----------------------------------------------|--------------------------------------------------|
+| **Types**              | Primitive types: `undefined`, `null`, `boolean`, `number`, `bigint`, `string`, `symbol` | Objects: `Object`, `Array`, `Function`, `Date`, etc. |
+| **Storage**            | Stored directly in memory                      | Stored as a reference to the memory location     |
+| **Assignment Behavior**| When assigned, a **copy** of the value is created | When assigned, a **reference** to the original object is created |
+| **Passing to Functions**| Passed by **value** — a copy of the data is passed | Passed by **reference** — a reference to the original object is passed |
+| **Immutability**       | Immutable — the value cannot be changed after being assigned | Mutable — the properties or elements of the object can be modified |
+| **Equality**           | Comparison is based on the actual value | Comparison is based on memory location (reference) |
+
+### 💡 Examples:
+
+1. **Value Types:**
+
+```js
+let x = 10;
+let y = x; // Copy of the value is made
+
+x = 20; // Changes 'x', but 'y' remains unchanged
+
+console.log(x); // 20
+console.log(y); // 10
+
+let obj1 = { name: 'Alice' };
+let obj2 = obj1; // Reference to the same object in memory
+
+obj1.name = 'Bob'; // Modifies the original object
+
+console.log(obj1.name); // 'Bob'
+console.log(obj2.name); // 'Bob'
+```
+
