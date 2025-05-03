@@ -365,3 +365,49 @@ var bar = function() {
 };
 
 ```
+## ❓ Question 9: What is a Promise in JavaScript, and how do the methods like `Promise.all()`, `Promise.race()`, and `Promise.allSettled()` work?
+
+### ✅ Answer:
+
+A **Promise** in JavaScript is an object representing the eventual completion (or failure) of an asynchronous operation and its resulting value. It allows you to write asynchronous code in a more readable manner, without the "callback hell."
+
+Promises have three states:
+1. **Pending**: The promise is still in progress.
+2. **Fulfilled**: The promise has been completed successfully.
+3. **Rejected**: The promise has failed.
+
+### 🧠 **Creating a Promise**:
+
+You can create a promise using the `new Promise()` constructor, which takes a function called the *executor* as an argument. This function receives two parameters: `resolve` (for fulfilling the promise) and `reject` (for rejecting the promise).
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+  const success = true;
+  
+  if (success) {
+    resolve('Promise fulfilled');
+  } else {
+    reject('Promise rejected');
+  }
+});
+
+```
+### 🧠 Promise Methods:
+
+```js
+myPromise.then(result => {
+  console.log(result);  // "Promise fulfilled"
+}).catch(error => {
+  console.log(error);  // Handle rejection if any
+});
+
+myPromise.catch(error => {
+  console.log(error);  // "Promise rejected"
+});
+
+myPromise.finally(() => {
+  console.log('Promise completed');  // Runs regardless of promise outcome
+});
+
+
+```
