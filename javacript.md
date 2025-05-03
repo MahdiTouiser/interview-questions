@@ -820,3 +820,80 @@ console.log(counter.next()); // { value: 3, done: false }
 console.log(counter.next()); // { value: undefined, done: true }
 ```
 
+## ❓ Question 17: What are `Set` and `Map` in JavaScript?
+
+### ✅ Answer:
+
+In JavaScript, `Set` and `Map` are built-in data structures introduced in ES6 to handle **collections of values** more efficiently and flexibly than plain objects or arrays.
+
+---
+
+## 🔷 `Set`
+
+A `Set` is a **collection of unique values**. It automatically removes duplicates.
+
+### 🔧 Syntax:
+
+```js
+const mySet = new Set([1, 2, 3, 3, 4]);
+console.log(mySet); // Set(4) { 1, 2, 3, 4 }
+```
+
+| Method          | Description                    |
+| --------------- | ------------------------------ |
+| `add(value)`    | Adds a new value               |
+| `delete(value)` | Removes a value                |
+| `has(value)`    | Checks if a value exists       |
+| `clear()`       | Removes all elements           |
+| `size`          | Returns the number of elements |
+
+### Example :
+
+``` js
+const ids = new Set();
+ids.add(1);
+ids.add(2);
+ids.add(1); // Duplicate, ignored
+console.log(ids); // Set { 1, 2 }
+```
+
+### 🔶 Map
+A Map is a collection of key-value pairs where keys can be any type (not just strings).
+```js
+const myMap = new Map();
+myMap.set('name', 'Alice');
+myMap.set(1, 'One');
+console.log(myMap); // Map(2) { 'name' => 'Alice', 1 => 'One' }
+
+```
+
+| Method            | Description                    |
+| ----------------- | ------------------------------ |
+| `set(key, value)` | Adds or updates a value by key |
+| `get(key)`        | Gets the value for a given key |
+| `has(key)`        | Checks if a key exists         |
+| `delete(key)`     | Removes a key-value pair       |
+| `clear()`         | Clears all entries             |
+| `size`            | Returns the number of entries  |
+
+
+### Example :
+```js
+
+const user = new Map();
+user.set('name', 'Bob');
+user.set('age', 25);
+
+console.log(user.get('name')); // Bob
+console.log(user.has('age'));  // true
+
+```
+
+| Feature   | `Set`                        | `Map`                        |
+| --------- | ---------------------------- | ---------------------------- |
+| Stores    | Unique values                | Key-value pairs              |
+| Keys      | Not applicable               | Can be any type              |
+| Order     | Insertion order is preserved | Insertion order is preserved |
+| Iteration | `for...of`, `.forEach()`     | `for...of`, `.forEach()`     |
+
+---
