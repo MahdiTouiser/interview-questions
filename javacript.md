@@ -778,3 +778,45 @@ OR
 
 
 ---
+
+## ❓ Question 16: What are Generator Functions in JavaScript?
+
+### ✅ Answer:
+
+A **Generator function** is a special type of function in JavaScript that can be **paused and resumed**, allowing you to generate values on demand.
+
+They are defined using the `function*` syntax and use the `yield` keyword to pause execution.
+
+---
+
+### 🔧 Syntax:
+
+```js
+function* generatorFunc() {
+  yield value1;
+  yield value2;
+  // ...
+}
+```
+
+### To run the generator, you call it and use `.next()` :
+const gen = generatorFunc();
+gen.next(); // { value: value1, done: false }
+gen.next(); // { value: value2, done: false }
+gen.next(); // { value: undefined, done: true }
+
+```js
+###function* countToThree() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+const counter = countToThree();
+
+console.log(counter.next()); // { value: 1, done: false }
+console.log(counter.next()); // { value: 2, done: false }
+console.log(counter.next()); // { value: 3, done: false }
+console.log(counter.next()); // { value: undefined, done: true }
+```
+
