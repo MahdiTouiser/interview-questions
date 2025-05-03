@@ -63,6 +63,8 @@ function test() {
 test();
 
 ```
+
+
 ## ❓ Question 3: Explain the concept of closure in JavaScript.
 
 ### ✅ Answer:
