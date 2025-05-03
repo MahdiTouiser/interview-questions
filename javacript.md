@@ -411,3 +411,78 @@ myPromise.finally(() => {
 
 
 ```
+
+### 🧠 Promise Static Methods:
+`Promise.all()` takes an iterable (usually an array) of promises and returns a single promise. This promise resolves when all promises in the iterable are resolved, or rejects if any of the promises in the array is rejected.
+```js
+const promise1 = Promise.resolve(3);
+const promise2 = new Promise((resolve, reject) => setTimeout(resolve, 100, 'foo'));
+const promise3 = 42;
+
+Promise.all([promise1, promise2, promise3])
+  .then(values => {
+    console.log(values);  // [3, "foo", 42]
+  })
+  .catch(error => {
+    console.log(error);  // If any promise is rejected, it enters this block
+  });
+
+
+```
+If any of the promises rejects, the entire `Promise.all()` call rejects immediately with that error.
+
+---
+
+`Promise.allSettled()` returns a promise that resolves after all of the given promises have either been fulfilled or rejected. It always resolves with an array of objects that describe the outcome of each promise.
+```js
+
+const promise1 = Promise.resolve(3);
+const promise2 = new Promise((resolve, reject) => setTimeout(reject, 100, 'Error'));
+const promise3 = Promise.resolve(42);
+
+Promise.allSettled([promise1, promise2, promise3])
+  .then(results => {
+    console.log(results);
+    // [
+    //   { status: "fulfilled", value: 3 },
+    //   { status: "rejected", reason: "Error" },
+    //   { status: "fulfilled", value: 42 }
+    // ]
+  });
+```
+Unlike `Promise.all()`, `Promise.allSettled()` does not reject if any of the promises fail. It returns the outcome of each promise.
+
+---
+
+`Promise.race()` takes an iterable of promises and returns a promise that resolves or rejects as soon as one of the promises resolves or rejects, whichever happens first.
+```js
+const promise1 = new Promise((resolve, reject) => setTimeout(resolve, 100, 'First'));
+const promise2 = new Promise((resolve, reject) => setTimeout(resolve, 50, 'Second'));
+
+Promise.race([promise1, promise2])
+  .then(result => {
+    console.log(result);  // "Second" (because promise2 resolves first)
+  })
+  .catch(error => {
+    console.log(error);
+  });
+```
+
+`Promise.race()` resolves or rejects as soon as the first promise settles, making it useful for scenarios like timeouts.
+
+---
+
+### 🧠 Summary:
+`Promise.all()`: Resolves when all promises are fulfilled or rejects if any promise is rejected.
+
+`Promise.allSettled()`: Resolves when all promises are settled (fulfilled or rejected) and returns the outcome of each promise.
+
+`Promise.race()`: Resolves as soon as the first promise settles, either resolved or rejected.
+
+`then()`: Handles the fulfillment of a promise.
+
+`catch()`: Handles the rejection of a promise.
+
+`finally()`: Executes code after the promise is settled, regardless of the outcome.
+
+
