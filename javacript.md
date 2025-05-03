@@ -669,3 +669,62 @@ const sum = numbers.reduce((acc, curr) => acc + curr, 0);
 
 console.log(sum); // 10
 ```
+
+---
+
+## ❓ Question 14: What is a Higher-Order Function (HOF) in JavaScript?
+
+### ✅ Answer:
+
+A **Higher-Order Function (HOF)** is a function that either:
+
+1. **Takes one or more functions as arguments**, or
+2. **Returns a function as its result**.
+
+This enables powerful patterns like function composition, callbacks, and currying.
+
+---
+
+### 💡 Example 1: A Function That Takes Another Function as an Argument
+
+```js
+function greet(name) {
+  return `Hello, ${name}`;
+}
+
+function processUser(name, callback) {
+  return callback(name);
+}
+
+console.log(processUser("Alice", greet)); // "Hello, Alice"
+```
+
+### 💡 Example 2: A Function That Returns Another Function
+```js
+function multiplier(factor) {
+  return function (number) {
+    return number * factor;
+  };
+}
+
+const double = multiplier(2);
+console.log(double(5)); // 10
+```
+### ✅ Built-in Higher-Order Functions in JavaScript:
+Array.prototype.map()
+
+Array.prototype.filter()
+
+Array.prototype.reduce()
+
+Array.prototype.forEach()
+
+| Feature                 | Description                                      |
+| ----------------------- | ------------------------------------------------ |
+| Takes function as input | Yes                                              |
+| Returns function        | Yes                                              |
+| Used for                | Reusability, composition, abstraction            |
+| Examples                | `map`, `filter`, `reduce`, custom callback funcs |
+
+
+---
