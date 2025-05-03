@@ -581,3 +581,63 @@ console.log(Boolean("hello"));  // true
 | Implicit      | JavaScript engine (auto) | `"5" + 1 → "51"`  |
 | Explicit      | Developer (manual)       | `Number("5") → 5` |
 
+---
+## ❓ Question 12: What is the difference between `bind()`, `call()`, and `apply()` in JavaScript?
+
+### ✅ Answer:
+
+All three methods — `bind()`, `call()`, and `apply()` — are used to **explicitly set the `this` context** of a function in JavaScript.
+
+---
+
+### 🔗 `bind()`
+
+- Returns a **new function** with the specified `this` value.
+- Does **not** invoke the function immediately.
+
+#### 💡 Example:
+```js
+const user = { name: "Alice" };
+
+function greet(greeting) {
+  return `${greeting}, ${this.name}`;
+}
+
+const greetAlice = greet.bind(user);
+console.log(greetAlice("Hello")); // "Hello, Alice"
+```
+
+### ☎️ `call()` 
+- Invokes the function immediately, with this and arguments passed individually.
+```js
+const user = { name: "Bob" };
+
+function greet(greeting) {
+  console.log(`${greeting}, ${this.name}`);
+}
+
+greet.call(user, "Hi"); // "Hi, Bob"
+```
+
+### 📞 `apply()` 
+- Invokes the function immediately, like call(), but arguments are passed as an array.
+```js
+const user = { name: "Charlie" };
+
+function greet(greeting, punctuation) {
+  console.log(`${greeting}, ${this.name}${punctuation}`);
+}
+
+greet.apply(user, ["Hey", "!"]); // "Hey, Charlie!"
+```
+| Method    | Invokes Immediately? | Arguments Format | Returns      |
+| --------- | -------------------- | ---------------- | ------------ |
+| `bind()`  | ❌ No                 | Individually     | New function |
+| `call()`  | ✅ Yes                | Individually     | Return value |
+| `apply()` | ✅ Yes                | Array            | Return value |
+
+
+---
+
+
+
