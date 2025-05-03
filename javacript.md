@@ -24,10 +24,10 @@ console.log(a); // undefined
 
 let b = null;
 console.log(b); // null
+```
 
----
 
-## ❓ Question: What is the difference between `var`, `let`, and `const` in JavaScript?
+## ❓ Question 2: What is the difference between `var`, `let`, and `const` in JavaScript?
 
 ### ✅ Answer:
 
@@ -53,5 +53,5 @@ function test() {
   console.log(y); // ReferenceError (block-scoped)
   console.log(z); // ReferenceError (block-scoped)
 }
-
+```
 
