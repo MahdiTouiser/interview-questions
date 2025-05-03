@@ -229,4 +229,57 @@ obj1.name = 'Bob'; // Modifies the original object
 console.log(obj1.name); // 'Bob'
 console.log(obj2.name); // 'Bob'
 ```
+## ❓ Question 7: What are the heap and memory in JavaScript?
 
+### ✅ Answer:
+
+In JavaScript, memory management is crucial for understanding how values are stored and how they are managed in the context of execution. **Heap** is a part of the memory structure, and understanding it helps in optimizing performance and preventing memory leaks.
+
+### 🧠 Memory in JavaScript:
+
+JavaScript uses two types of memory for storing data: the **stack** and the **heap**. 
+
+- **Stack Memory**: 
+  - Used for storing **primitive** data types (such as `number`, `string`, `boolean`, etc.).
+  - It operates in a **Last In, First Out (LIFO)** order.
+  - Each time a function is called, a new memory block is added to the stack. When the function finishes, the memory is cleared.
+  - **Fixed-size** and **fast** memory storage.
+
+- **Heap Memory**: 
+  - Used for storing **reference** types (such as `objects`, `arrays`, `functions`, etc.).
+  - It operates on a **dynamic allocation** system, meaning memory is allocated when needed and released when no longer in use.
+  - Heap memory is **larger** and **slower** than stack memory because it allows for more complex data structures like objects and arrays.
+
+### 🧠 Heap vs. Stack:
+
+| Feature                  | **Stack**                                      | **Heap**                                     |
+|--------------------------|------------------------------------------------|----------------------------------------------|
+| **Used for**             | Primitive types (`number`, `boolean`, `string`) | Reference types (`objects`, `arrays`, `functions`) |
+| **Memory Allocation**    | Static and fixed size                          | Dynamic allocation (can grow or shrink)      |
+| **Storage**              | Fast, but limited in size                     | Larger, but slower                          |
+| **LIFO** (Last In, First Out) | Yes                                          | No                                           |
+| **Lifetime**             | Tied to the execution context (function calls) | Until the object is no longer referenced (garbage collection) |
+| **Speed**                | Very fast                                      | Slower compared to stack                    |
+
+### 💡 Example of Stack and Heap:
+
+1. **Stack Example (Primitive Types)**:
+
+```js
+let a = 5;  // Stored in stack
+let b = a;  // Copy of 'a' is made in stack
+
+a = 10;  // 'a' is updated, but 'b' remains 5
+console.log(a); // 10
+console.log(b); // 5
+
+2. **Heap Example (Reference Types)**:
+let obj1 = { name: 'John' };  // Stored in heap
+let obj2 = obj1;              // Both obj1 and obj2 point to the same memory location in the heap
+
+obj1.name = 'Jane';  // Both 'obj1' and 'obj2' are modified
+
+console.log(obj1.name); // 'Jane'
+console.log(obj2.name); // 'Jane'
+
+```
