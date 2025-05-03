@@ -47,11 +47,20 @@ function test() {
     var x = 10;
     let y = 20;
     const z = 30;
+
+    console.log("Inside block:");
+    console.log("x:", x); // 10
+    console.log("y:", y); // 20
+    console.log("z:", z); // 30
   }
 
-  console.log(x); // 10 (function-scoped)
-  console.log(y); // ReferenceError (block-scoped)
-  console.log(z); // ReferenceError (block-scoped)
+  console.log("Outside block:");
+  console.log("x:", x); // 10 (accessible — var is function-scoped)
+  console.log("y:", typeof y); // undefined (ReferenceError in real code — let is block-scoped)
+  console.log("z:", typeof z); // undefined (ReferenceError in real code — const is block-scoped)
 }
+
+test();
+
 ```
 
