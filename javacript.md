@@ -63,4 +63,28 @@ function test() {
 test();
 
 ```
+## ❓ Question 3: Explain the concept of closure in JavaScript.
 
+### ✅ Answer:
+
+A **closure** is created when a function remembers and has access to variables from its **outer (enclosing) function scope**, even after the outer function has finished executing.
+
+In simpler terms, a closure gives you access to an outer function’s variables from an inner function — even after the outer function has returned.
+
+### 💡 Example:
+
+```js
+function outer() {
+  let count = 0;
+
+  return function inner() {
+    count++;
+    console.log(count);
+  };
+}
+
+const counter = outer();
+counter(); // 1
+counter(); // 2
+counter(); // 3
+```
