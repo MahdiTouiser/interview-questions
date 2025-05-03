@@ -728,3 +728,53 @@ Array.prototype.forEach()
 
 
 ---
+
+
+## ❓ Question 15: What is an IIFE (Immediately Invoked Function Expression) in JavaScript?
+
+### ✅ Answer:
+
+An **IIFE** (Immediately Invoked Function Expression) is a function that is **defined and executed immediately** after its creation.
+
+It is often used to create a private scope and avoid polluting the global namespace.
+
+---
+
+### 🔧 Syntax:
+
+```js
+(function () {
+  // code inside this function runs immediately
+})();
+```
+
+OR 
+
+```js
+
+(() => {
+  // code runs immediately
+})();
+
+```
+### Example :
+
+```js
+(function () {
+  const message = "This runs immediately!";
+  console.log(message);
+})();
+
+// Output: This runs immediately!
+
+```
+
+| Feature              | Description                             |
+| -------------------- | --------------------------------------- |
+| Stands for           | Immediately Invoked Function Expression |
+| Purpose              | Encapsulation, private scope            |
+| Executed Immediately | Yes                                     |
+| Uses                 | Avoid global scope pollution            |
+
+
+---
