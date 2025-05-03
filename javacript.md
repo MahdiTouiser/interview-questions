@@ -272,8 +272,12 @@ let b = a;  // Copy of 'a' is made in stack
 a = 10;  // 'a' is updated, but 'b' remains 5
 console.log(a); // 10
 console.log(b); // 5
+```
+
 
 2. **Heap Example (Reference Types)**:
+```js
+
 let obj1 = { name: 'John' };  // Stored in heap
 let obj2 = obj1;              // Both obj1 and obj2 point to the same memory location in the heap
 
