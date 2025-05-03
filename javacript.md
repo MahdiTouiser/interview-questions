@@ -112,11 +112,31 @@ No, JavaScript is not inherently asynchronous. It is **single-threaded**, meanin
 ### 💡 Example (Async with setTimeout and Promise):
 
 ```js
-console.log("Start");
+console.log('Start');
 
 setTimeout(() => {
-  console.log("Async operation complete");
-}, 1000);
+  console.log('Timeout 1');
+}, 0);
 
-console.log("End");
+Promise.resolve().then(() => {
+  console.log('Promise 1');
+}).then(() => {
+  console.log('Promise 2');
+});
+
+setTimeout(() => {
+  console.log('Timeout 2');
+}, 0);
+
+console.log('End');
+
+
+answers :
+Start
+End
+Promise 1
+Promise 2
+Timeout 1
+Timeout 2
+
 ```
