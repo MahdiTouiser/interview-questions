@@ -287,3 +287,37 @@ console.log(obj1.name); // 'Jane'
 console.log(obj2.name); // 'Jane'
 
 ```
+
+## ❓ Question 8: What is Garbage Collection and Memory Leak in JavaScript?
+
+### ✅ Answer:
+
+In JavaScript, **garbage collection** is a mechanism that automatically manages memory by removing objects that are no longer needed or accessible. **Memory leaks** occur when memory is not properly released, causing the application to consume more memory over time, which can lead to performance issues.
+
+### 🧠 **Garbage Collection in JavaScript**:
+
+Garbage collection is the process of **automatically** identifying and cleaning up objects that are no longer reachable or referenced by the program. JavaScript engines, such as V8 (used by Chrome and Node.js), use **automatic memory management** to handle this process.
+
+#### How Garbage Collection Works:
+1. **Reachability**:
+   - JavaScript identifies objects that are **reachable**, meaning they can still be accessed by the program. If an object is no longer reachable (i.e., no references point to it), it becomes eligible for garbage collection.
+   
+2. **Mark-and-Sweep Algorithm**:
+   - The **Mark-and-Sweep** algorithm is the most common garbage collection technique used in JavaScript.
+     1. **Mark**: The garbage collector starts from the root objects (global objects, local variables, etc.) and marks all objects that can be reached from there.
+     2. **Sweep**: Once marking is complete, the garbage collector sweeps through memory, clearing all unmarked objects (those that are no longer reachable).
+
+3. **Memory Management**:
+   - When an object becomes unreachable, the memory allocated to it is freed, making space for new objects.
+
+### 💡 Example of Garbage Collection:
+
+```js
+function createObject() {
+  let obj = { name: 'Alice' };  // 'obj' is a reference to an object
+  return obj;
+}
+
+let ref = createObject();  // 'ref' holds a reference to the object
+ref = null;  // 'ref' no longer holds the reference, making the object eligible for GC
+```
