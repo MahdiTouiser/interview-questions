@@ -25,3 +25,33 @@ console.log(a); // undefined
 let b = null;
 console.log(b); // null
 
+
+
+## ❓ Question: What is the difference between `var`, `let`, and `const` in JavaScript?
+
+### ✅ Answer:
+
+| Feature           | `var`                          | `let`                           | `const`                         |
+|-------------------|--------------------------------|----------------------------------|----------------------------------|
+| Scope             | Function-scoped                | Block-scoped                    | Block-scoped                    |
+| Hoisting          | Yes (initialized as `undefined`) | Yes (but not initialized)       | Yes (but not initialized)       |
+| Reassignment      | Allowed                        | Allowed                          | ❌ Not allowed                   |
+| Redeclaration     | Allowed                        | ❌ Not allowed (in same scope)   | ❌ Not allowed                   |
+| Temporal Dead Zone| No                             | Yes                              | Yes                              |
+
+### 💡 Example:
+
+```js
+function test() {
+  if (true) {
+    var x = 10;
+    let y = 20;
+    const z = 30;
+  }
+
+  console.log(x); // 10 (function-scoped)
+  console.log(y); // ReferenceError (block-scoped)
+  console.log(z); // ReferenceError (block-scoped)
+}
+
+
