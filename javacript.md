@@ -321,3 +321,49 @@ function createObject() {
 let ref = createObject();  // 'ref' holds a reference to the object
 ref = null;  // 'ref' no longer holds the reference, making the object eligible for GC
 ```
+
+## ❓ Question: What is Hoisting in JavaScript?
+
+### ✅ Answer:
+
+**Hoisting** is a JavaScript mechanism where **variable and function declarations** are moved to the top of their containing scope during the compile phase, before the code has been executed. However, only the declarations are hoisted, not the initializations.
+
+### 🧠 Key Points of Hoisting:
+
+- **Variable Hoisting**:
+  - **`var`** declarations are hoisted and initialized with `undefined`.
+  - **`let`** and **`const`** declarations are hoisted but not initialized, meaning they enter a **temporal dead zone** (TDZ) where they cannot be accessed before their declaration is executed.
+
+- **Function Hoisting**:
+  - **Function declarations** are hoisted completely (both the declaration and the body) to the top of their scope.
+  - **Function expressions** (including arrow functions) are **not hoisted** in the same way and are treated like variables.
+
+### 🧠 Examples of Hoisting:
+
+#### 1. **Variable Hoisting with `var`**:
+
+```js
+console.log(x); // undefined
+var x = 5;
+console.log(x); // 5
+
+console.log(a); // ReferenceError: Cannot access 'a' before initialization
+let a = 10;
+
+foo(); // "Hello"
+function foo() {
+  console.log("Hello");
+}
+
+baz(); // TypeError: baz is not a function
+var baz = () => {
+  console.log("Arrow function");
+};
+
+
+bar(); // TypeError: bar is not a function
+var bar = function() {
+  console.log("World");
+};
+
+```
