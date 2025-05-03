@@ -91,7 +91,7 @@ counter(); // 2
 counter(); // 3
 ```
 
-## ❓ Question: Is JavaScript async by itself? If not, how does it get handled?
+## ❓ Question 4: Is JavaScript async by itself? If not, how does it get handled?
 
 ### ✅ Answer:
 
