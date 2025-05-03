@@ -486,3 +486,55 @@ Promise.race([promise1, promise2])
 `finally()`: Executes code after the promise is settled, regardless of the outcome.
 
 
+## ❓ Question 10: What is the difference between `setTimeout()` and `setInterval()` in JavaScript?
+
+### ✅ Answer:
+
+Both `setTimeout()` and `setInterval()` are timing functions used to schedule asynchronous operations, but they behave differently.
+
+---
+
+### ⏱ `setTimeout()`
+
+- Executes a function **once** after a specified delay.
+- Returns a timeout ID that can be used with `clearTimeout()`.
+
+#### 💡 Example:
+
+```js
+console.log("Start");
+
+setTimeout(() => {
+  console.log("This runs after 2 seconds");
+}, 2000);
+
+console.log("End");
+```
+---
+
+### 🔁 setInterval()
+- Repeatedly executes a function every specified interval.
+- Returns an interval ID that can be used with `clearInterval()`.
+
+### 💡 Example:
+
+
+```js
+let count = 0;
+
+const intervalId = setInterval(() => {
+  count++;
+  console.log(`Interval count: ${count}`);
+  
+  if (count === 3) {
+    clearInterval(intervalId); // Stops after 3 executions
+  }
+}, 1000);
+
+```
+
+| Feature       | `setTimeout()`     | `setInterval()`        |
+| ------------- | ------------------ | ---------------------- |
+| Runs          | Once after delay   | Repeats every interval |
+| Cancel method | `clearTimeout(id)` | `clearInterval(id)`    |
+| Use case      | Delayed task       | Repeated task          |
