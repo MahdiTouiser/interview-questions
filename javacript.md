@@ -897,3 +897,78 @@ console.log(user.has('age'));  // true
 | Iteration | `for...of`, `.forEach()`     | `for...of`, `.forEach()`     |
 
 ---
+
+## ❓ Question 17: What is the `this` keyword in JavaScript?
+
+### ✅ Answer:
+
+In JavaScript, the `this` keyword refers to the **execution context** of a function, meaning it determines what "object" the function is a method of or what context the function is being executed in. It is used to access properties or methods of the current object.
+
+### 🧠 Key Points:
+
+1. **Global Context**: In the global scope, `this` refers to the global object (`window` in browsers).
+2. **Object Context**: Inside a method, `this` refers to the object the method is a property of.
+3. **Function Context**: Inside a regular function, `this` refers to the global object (`window` in browsers) in non-strict mode, and `undefined` in strict mode.
+4. **Arrow Functions**: Arrow functions **do not** have their own `this` and inherit it from the surrounding (lexical) context.
+
+---
+
+### 🏠 `this` in Global Context
+
+In the global execution context (outside of any function or object), `this` refers to the global object.
+
+```js
+console.log(this); // In a browser, this will refer to the `window` object
+```
+
+
+### 🧑‍💻 this in Object Context
+Inside an object method, this refers to the object that the method is a part of.
+```js
+const person = {
+  name: "Alice",
+  greet: function () {
+    console.log(`Hello, ${this.name}`);
+  }
+};
+
+person.greet(); // "Hello, Alice"
+```
+In this case, this inside the greet method refers to the person object.
+
+---
+### 🔄 this in Regular Function Context
+In regular functions (not inside an object), this refers to the global object (window in browsers) in non-strict mode.
+```js
+function showThis() {
+  console.log(this); // In non-strict mode, this refers to the global object (window in browsers)
+}
+
+showThis();
+```
+### 🏃 this in Constructor Functions
+When using constructor functions to create new objects, this refers to the new instance being created.
+```js
+function Person(name) {
+  this.name = name;
+}
+
+const alice = new Person("Alice");
+console.log(alice.name); // "Alice"
+
+```
+In this case, this refers to the newly created alice object.
+
+| Context                       | `this` refers to                                              |
+| ----------------------------- | ------------------------------------------------------------- |
+| Global Scope                  | The global object (`window` in browsers, `global` in Node.js) |
+| Object Method                 | The object the method is a property of                        |
+| Regular Function              | The global object (or `undefined` in strict mode)             |
+| Constructor Function          | The newly created object                                      |
+| Arrow Functions               | Inherited `this` from the surrounding context                 |
+| `bind()`, `call()`, `apply()` | Explicitly sets the value of `this`                           |
+
+
+---
+
+
