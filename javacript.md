@@ -25,7 +25,7 @@ console.log(a); // undefined
 let b = null;
 console.log(b); // null
 
-
+---
 
 ## ❓ Question: What is the difference between `var`, `let`, and `const` in JavaScript?
 
