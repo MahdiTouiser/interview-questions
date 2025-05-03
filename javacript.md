@@ -173,4 +173,21 @@ const obj = {
   greet: regularFunction
 };
 obj.greet(); // 'this' refers to 'obj' here
+
+
+const arrowFunction = () => {
+  console.log(this); // 'this' is inherited from the surrounding scope
+};
+
+const obj = { 
+  name: 'John',
+  greet: arrowFunction
+};
+obj.greet(); // 'this' refers to the surrounding context (likely window or global object in non-strict mode)
+
+
+const add = (a, b) => a + b;  // Returns the result of a + b implicitly
+console.log(add(2, 3)); // 5
+
 ```
+
