@@ -140,3 +140,37 @@ Timeout 1
 Timeout 2
 
 ```
+
+## ❓ Question 5: What are the differences between regular functions and arrow functions in JavaScript?
+
+### ✅ Answer:
+
+In JavaScript, both **regular functions** and **arrow functions** are used to define functions, but they have several key differences in behavior.
+
+### 🧠 Key Differences:
+
+| Feature                  | **Regular Function**                               | **Arrow Function**                              |
+|--------------------------|----------------------------------------------------|-------------------------------------------------|
+| **Syntax**               | `function foo() { ... }`                         | `const foo = () => { ... }`                    |
+| **`this` Binding**       | Binds its own `this` (depends on how the function is called) | Does not bind its own `this`; inherits it from the surrounding scope (lexical scoping) |
+| **Arguments Object**     | Has an `arguments` object that contains all passed parameters | Does not have its own `arguments` object        |
+| **Constructor**          | Can be used as a constructor with `new` keyword   | Cannot be used as a constructor (throws an error) |
+| **Method of an Object**  | Can be used as a method within an object          | Cannot be used as a method of an object (because `this` would not refer to the object) |
+| **Return Value**         | Must use `return` explicitly if needed            | Implicit return for single expression functions |
+| **Hoisting**             | Hoisted to the top of the scope (can be called before declaration) | Not hoisted (must be defined before use)        |
+
+### 💡 Examples:
+
+1. **Regular Function:**
+
+```js
+function regularFunction() {
+  console.log(this); // 'this' is bound to the object or context that calls the function
+}
+
+const obj = { 
+  name: 'John',
+  greet: regularFunction
+};
+obj.greet(); // 'this' refers to 'obj' here
+```
