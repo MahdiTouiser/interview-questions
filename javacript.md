@@ -640,4 +640,32 @@ greet.apply(user, ["Hey", "!"]); // "Hey, Charlie!"
 ---
 
 
+## ❓ Question 13: What is the `reduce()` method in JavaScript?
 
+### ✅ Answer:
+
+The `reduce()` method executes a **reducer function** on each element of the array, resulting in a **single output value**.
+
+---
+
+### 🔧 Syntax:
+
+```js
+array.reduce((accumulator, currentValue, index, array) => {
+  // return updated accumulator
+}, initialValue);
+```
+accumulator: Accumulates the return values.
+
+currentValue: Current element being processed.
+
+initialValue: (Optional) Initial value for the accumulator.
+
+### Example :
+```js
+const numbers = [1, 2, 3, 4];
+
+const sum = numbers.reduce((acc, curr) => acc + curr, 0);
+
+console.log(sum); // 10
+```
