@@ -539,8 +539,9 @@ const intervalId = setInterval(() => {
 | Cancel method | `clearTimeout(id)` | `clearInterval(id)`    |
 | Use case      | Delayed task       | Repeated task          |
 
+---
 
- ## ❓ Question 11: What is Implicit and Explicit Type Coercion in JavaScript?
+ ## ❓ Question 11 : What is Implicit and Explicit Type Coercion in JavaScript?
 
 ### ✅ Answer:
 
