@@ -538,3 +538,45 @@ const intervalId = setInterval(() => {
 | Runs          | Once after delay   | Repeats every interval |
 | Cancel method | `clearTimeout(id)` | `clearInterval(id)`    |
 | Use case      | Delayed task       | Repeated task          |
+
+
+ ## ❓ Question 11: What is Implicit and Explicit Type Coercion in JavaScript?
+
+### ✅ Answer:
+
+**Type coercion** in JavaScript refers to the automatic or manual conversion of values from one data type to another (like string to number, boolean to string, etc.).
+
+---
+
+### 🔄 Implicit Type Coercion
+
+JavaScript automatically converts types during operations when needed. This is also known as **type conversion behind the scenes**.
+
+#### 💡 Examples:
+
+```js
+console.log("5" + 2);      // "52" (number 2 is converted to string)
+console.log("5" - 2);      // 3   (string "5" is converted to number)
+console.log(true + 1);     // 2   (true is converted to 1)
+console.log(false == 0);   // true (false is coerced to 0)
+```
++ triggers string conversion when one operand is a string.
+-, *, / convert both operands to numbers.
+
+---
+
+### ✋ Explicit Type Coercion
+You manually convert one data type to another using built-in functions like Number(), String(), or Boolean().
+
+### 💡 Examples:
+```js
+console.log(Number("123"));     // 123
+console.log(String(123));       // "123"
+console.log(Boolean(0));        // false
+console.log(Boolean("hello"));  // true
+```
+| Coercion Type | Triggered By             | Example           |
+| ------------- | ------------------------ | ----------------- |
+| Implicit      | JavaScript engine (auto) | `"5" + 1 → "51"`  |
+| Explicit      | Developer (manual)       | `Number("5") → 5` |
+
