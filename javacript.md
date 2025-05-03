@@ -340,8 +340,6 @@ ref = null;  // 'ref' no longer holds the reference, making the object eligible 
 
 ### 🧠 Examples of Hoisting:
 
-#### 1. **Variable Hoisting with `var`**:
-
 ```js
 console.log(x); // undefined
 var x = 5;
