@@ -5,6 +5,32 @@ Given a string with words separated by spaces, return the word that appears most
 ```js
 input = "hello hi hi hello hi how are you"
 output = "hi"
+
+
+function getRepeatedWord(str) {
+    const words = str.split(' ');
+    const counts = {}; // Holds frequency of each word
+
+    let maxWord = '';
+    let maxCount = 0;
+
+    for (const word of words) {
+        counts[word] = (counts[word] || 0) + 1; // Count each word
+    }
+
+    for (const word in counts) {
+        if (counts[word] > maxCount) {
+            maxCount = counts[word];
+            maxWord = word;
+        }
+    }
+
+    return maxWord;
+}
+
+const result = "hello hi hi hello hi how are you";
+console.log(getRepeatedWord(result)); // Output: hi
+
 ```
 
 ---
