@@ -971,4 +971,133 @@ In this case, this refers to the newly created alice object.
 
 ---
 
+## ❓ Question 18: What is the difference between `Object.seal()` and `Object.freeze()` in JavaScript?
+
+### ✅ Answer:
+
+Both `Object.seal()` and `Object.freeze()` are used to control the mutability of objects in JavaScript, but they have different levels of restriction.
+
+---
+
+### 🔒 `Object.seal()`
+
+- **Prevents adding or removing properties** from the object.
+- **Allows modification of existing property values** (if writable).
+- Existing properties become **non-configurable** (cannot be deleted or reconfigured).
+
+#### 💡 Example:
+
+```js
+const user = {
+  name: "Alice"
+};
+
+Object.seal(user);
+
+user.name = "Bob";     // ✅ Allowed
+user.age = 25;         // ❌ Not added
+delete user.name;      // ❌ Not deleted
+
+console.log(user);     // { name: "Bob" }
+```
+### Object.freeze()
+Prevents adding, removing, or modifying properties.
+All existing properties become non-configurable and non-writable.
+Makes the object completely immutable (shallow freeze).
+
+```js
+const user = {
+  name: "Alice"
+};
+
+Object.freeze(user);
+
+user.name = "Bob";     // ❌ Not changed
+user.age = 25;         // ❌ Not added
+delete user.name;      // ❌ Not deleted
+
+console.log(user);     // { name: "Alice" }
+```
+
+| Feature                          | `Object.seal()`         | `Object.freeze()` |
+| -------------------------------- | ----------------------- | ----------------- |
+| Add new properties               | ❌ Not allowed           | ❌ Not allowed     |
+| Delete properties                | ❌ Not allowed           | ❌ Not allowed     |
+| Modify existing properties       | ✅ Allowed (if writable) | ❌ Not allowed     |
+| Make properties non-configurable | ✅ Yes                   | ✅ Yes             |
+| Make properties non-writable     | ❌ No                    | ✅ Yes             |
+| Shallow or deep                  | Shallow                 | Shallow           |
+
+
+---
+
+## ❓ Question 19: What is the difference between **shallow clone** and **deep clone** in JavaScript?
+
+### ✅ Answer:
+
+Cloning an object means creating a new object with the same properties as the original. The difference between **shallow** and **deep** cloning lies in how nested objects are handled.
+
+---
+
+### 🧪 Shallow Clone
+
+- Copies only the **top-level** properties.
+- If a property is a **reference (like an object or array)**, only the reference is copied, **not the actual nested object**.
+- Changes to nested objects affect the original.
+
+#### 💡 Example (Shallow Clone):
+
+```js
+const original = {
+  name: "Alice",
+  address: {
+    city: "Paris"
+  }
+};
+
+const shallowCopy = { ...original };
+
+shallowCopy.name = "Bob";                // ✅ Independent
+shallowCopy.address.city = "London";     // 🔴 Affects `original.address.city`
+
+console.log(original.address.city);      // "London"
+```
+
+### ✅ Common Shallow Clone Methods
+```js
+const copy1 = Object.assign({}, original);
+const copy2 = { ...original };
+```
+
+### 🔁 Deep Clone
+Recursively copies all levels of the object.
+Ensures nested objects or arrays are also cloned.
+Changes to nested objects do not affect the original.
+
+```js
+const original = {
+  name: "Alice",
+  address: {
+    city: "Paris"
+  }
+};
+
+// Deep clone using structuredClone (ES2021+)
+const deepCopy = structuredClone(original);
+
+deepCopy.address.city = "London";
+
+console.log(original.address.city); // "Paris" ✅ Original is unaffected
+```
+
+| Feature            | Shallow Clone           | Deep Clone                     |
+| ------------------ | ----------------------- | ------------------------------ |
+| Top-level copy     | ✅ Yes                   | ✅ Yes                          |
+| Nested object copy | ❌ No (shared reference) | ✅ Yes (fully independent)      |
+| Performance        | ⚡ Faster                | 🐢 Slower (recursive)          |
+| Use cases          | Simple objects          | Complex/nested data structures |
+
+
+---
+
 
