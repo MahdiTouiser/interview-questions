@@ -1088,6 +1088,9 @@ const deepCopy = structuredClone(original);
 deepCopy.address.city = "London";
 
 console.log(original.address.city); // "Paris" ✅ Original is unaffected
+///another way
+const deepCopy = JSON.parse(JSON.stringify(obj));
+
 ```
 
 | Feature            | Shallow Clone           | Deep Clone                     |
